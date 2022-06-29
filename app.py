@@ -1,11 +1,8 @@
 # -*- coding:utf-8 -*-
 """
-@Author:zhouys
-@Email:zhouys618@163.com
-@FileName:app.py
-@DateTime:2022/6/22 22:08
-@SoftWare:PyCharm
-app  运行文件
+@Created on : 2022/4/22 22:02
+@Author: binkuolo
+@Des: app运行时文件
 """
 
 from fastapi import FastAPI, HTTPException
@@ -14,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 from config import settings
 from fastapi.staticfiles import StaticFiles
-from core import exception, events, middleware,router
+from core import Exception, Events, Router, Middleware
 from fastapi.templating import Jinja2Templates
 from tortoise.exceptions import OperationalError, DoesNotExist
 from fastapi.openapi.docs import (get_redoc_html, get_swagger_ui_html, get_swagger_ui_oauth2_redirect_html)
@@ -77,19 +74,19 @@ async def redoc_html():
 
 
 # 事件监听
-application.add_event_handler("startup", events.startup(application))
-application.add_event_handler("shutdown", events.stopping(application))
+application.add_event_handler("startup", Events.startup(application))
+application.add_event_handler("shutdown", Events.stopping(application))
 
 # 异常错误处理
-application.add_exception_handler(HTTPException, exception.http_error_handler)
-application.add_exception_handler(RequestValidationError, exception.http422_error_handler)
-application.add_exception_handler(exception.UnicornException, exception.unicorn_exception_handler)
-application.add_exception_handler(DoesNotExist, exception.mysql_does_not_exist)
-application.add_exception_handler(OperationalError, exception.mysql_operational_error)
+application.add_exception_handler(HTTPException, Exception.http_error_handler)
+application.add_exception_handler(RequestValidationError, Exception.http422_error_handler)
+application.add_exception_handler(Exception.UnicornException, Exception.unicorn_exception_handler)
+application.add_exception_handler(DoesNotExist, Exception.mysql_does_not_exist)
+application.add_exception_handler(OperationalError, Exception.mysql_operational_error)
 
 
 # 中间件
-application.add_middleware(middleware.BaseMiddleware)
+application.add_middleware(Middleware.BaseMiddleware)
 
 application.add_middleware(
     CORSMiddleware,
@@ -107,7 +104,7 @@ application.add_middleware(
 )
 
 # 路由
-application.include_router(router.router)
+application.include_router(Router.router)
 
 # 静态资源目录
 application.mount('/', StaticFiles(directory=settings.STATIC_DIR), name="static")

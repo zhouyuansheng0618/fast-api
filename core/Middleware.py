@@ -1,17 +1,15 @@
 # -*- coding:utf-8 -*-
 """
-@Author:zhouys
-@Email:zhouys618@163.com
-@FileName:middleware.py
-@DateTime:2022/6/22 22:16
-@SoftWare:PyCharm
-中间件
+@Created on : 2022/4/22 22:02
+@Author: binkuolo
+@Des: 中间件
 """
+
 import time
 from starlette.datastructures import MutableHeaders
 from starlette.types import ASGIApp, Receive, Scope, Send, Message
 from fastapi import Request
-from core.utils import random_str
+from core.Utils import random_str
 
 
 class BaseMiddleware:

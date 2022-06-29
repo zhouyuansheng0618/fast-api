@@ -1,12 +1,10 @@
 # -*- coding:utf-8 -*-
 """
-@Author:zhouys
-@Email:zhouys618@163.com
-@FileName:exception.py
-@DateTime:2022/6/22 22:11
-@SoftWare:PyCharm
-异常处理
+@Created on : 2022/4/22 22:02
+@Author: binkuolo
+@Des: 异常处理
 """
+
 from fastapi import HTTPException, Request, status
 from fastapi.responses import JSONResponse
 from typing import Union

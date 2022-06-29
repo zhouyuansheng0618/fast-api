@@ -1,11 +1,10 @@
+# -*- coding:utf-8 -*-
 """
-@Author:zhouys
-@Email:zhouys618@163.com
-@FileName:config.py
-@DateTime:2022/6/22 22:06
-@SoftWare:PyCharm
-基本配置文件
+@Created on : 2022/4/22 22:02
+@Author: binkuolo
+@Des: 基本配置文件
 """
+
 import os
 from dotenv import load_dotenv, find_dotenv
 from pydantic import BaseSettings

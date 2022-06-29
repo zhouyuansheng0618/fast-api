@@ -1,12 +1,10 @@
 # -*- coding:utf-8 -*-
 """
-@Author:zhouys
-@Email:zhouys618@163.com
-@FileName:utils.py
-@DateTime:2022/6/22 22:17
-@SoftWare:PyCharm
-注册函数
+@Created on : 2022/4/22 22:02
+@Author: binkuolo
+@Des: 工具函数
 """
+
 import hashlib
 import random
 import uuid
